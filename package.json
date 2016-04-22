@@ -1,8 +1,8 @@
 {
   "name": "jquery-bem-utils",
   "version": "0.0.3",
-  "description": "Pacakge to add support for BEM to jQuery",
-  "main": "dist/jquery-bem.js",
+  "description": "Package to add support for BEM to jQuery",
+  "main": "src/jquery-bem.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
