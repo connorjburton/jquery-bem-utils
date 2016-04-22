@@ -76,7 +76,7 @@
 			var $this = $(this);
 			var currentClass = $this.attr('class');
 			if(!currentClass) return false;
-
+			
 			var mod = '--' + mod;
 
 			if(currentClass.substr(currentClass.length - mod.length, currentClass.length) === mod) {

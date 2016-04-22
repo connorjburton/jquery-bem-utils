@@ -1,5 +1,5 @@
 {
-  "name": "jquery-bem",
+  "name": "jquery-bem-utils",
   "version": "0.0.1",
   "description": "Pacakge to add support for BEM to jQuery",
   "main": "dist/jquery-bem.js",
