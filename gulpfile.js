@@ -3,7 +3,6 @@ var browserify = require('browserify');
 
 var gulp = require('gulp');
 var gutil = require('gulp-util');
-var uglify = require('gulp-uglify');
 var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 
@@ -26,7 +25,6 @@ gulp.task('js', function() {
 	return b.bundle()
 		.pipe(source(paths.js.destFile))
 		.pipe(buffer())
-		.pipe(uglify())
 		.on('error', gutil.log)
 		.pipe(gulp.dest(paths.js.dest));
 });
