@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/connorjburton/jquery-bem/badges/gpa.svg)](https://codeclimate.com/github/connorjburton/jquery-bem)
+
 # jQuery BEM
 
 Simple & sweet BEM integration in jQuery.
