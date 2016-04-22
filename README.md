@@ -1,6 +1,6 @@
 # jQuery BEM
 
-In progress, very basic BEM manipulation in jQuery.
+Simple & sweet BEM integration in jQuery.
 
 # Installation
 
