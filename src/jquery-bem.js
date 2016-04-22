@@ -1,21 +1,12 @@
-(function (root, factory) {
+(function(root, factory) {
   if(typeof define === "function" && define.amd) {
-    // Now we're wrapping the factory and assigning the return
-    // value to the root (window) and returning it as well to
-    // the AMD loader.
-    define(["jQuery"], function(jQuery){
-      return (root.jqueryBem = factory(jQuery));
-    });
-  } else if(typeof module === "object" && module.exports) {
-    // I've not encountered a need for this yet, since I haven't
-    // run into a scenario where plain modules depend on CommonJS
-    // *and* I happen to be loading in a CJS browser environment
-    // but I'm including it for the sake of being thorough
-    module.exports = (root.jqueryBem = factory(require("jQuery")));
+    define(['jquery'], factory);
+  } else if(typeof module === 'object' && module.exports) {
+    factory(require('jquery'));
   } else {
-    root.jqueryBem = factory(root.jQuery);
+    factory(root.jQuery);
   }
-})(this, function($) {
+}(this, function($) {
 	var regex = {
 		block: function(name) {
 			if(!name.length) {
@@ -86,4 +77,4 @@
 			}
 		}
 	});
-});
+}));
