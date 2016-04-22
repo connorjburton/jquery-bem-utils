@@ -23,7 +23,7 @@ findBlock(elementName)
 ```
 
 ```javascript
-$('body').findBlock('foobar'); // => returns $('.foo--red--padding-large')
+$('body').findBlock('foo'); // => returns $('.foo--red--padding-large')
 ```
 
 ```html
