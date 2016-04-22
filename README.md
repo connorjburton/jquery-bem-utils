@@ -16,7 +16,7 @@ require('jquery-bem-utils');
 
 # Usage
 
-You're BEM has to be in the style of `block__element--modifier` for this plugin to work.
+Your BEM has to be in the style of `block__element--modifier` for this plugin to work.
 
 **Find Block**
 
