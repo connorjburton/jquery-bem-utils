@@ -2,7 +2,7 @@
 
 # jQuery BEM
 
-Simple & sweet BEM integration in jQuery.
+Simple BEM integration in jQuery.
 
 # Installation
 
