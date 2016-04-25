@@ -1,6 +1,6 @@
 {
   "name": "jquery-bem-utils",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Package to add support for BEM to jQuery",
   "main": "src/jquery-bem.js",
   "scripts": {
