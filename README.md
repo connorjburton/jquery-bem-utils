@@ -1,6 +1,8 @@
+[![Code Climate](https://codeclimate.com/github/connorjburton/jquery-bem/badges/gpa.svg)](https://codeclimate.com/github/connorjburton/jquery-bem)
+
 # jQuery BEM
 
-In progress, very basic BEM manipulation in jQuery.
+Simple BEM integration in jQuery.
 
 # Installation
 
@@ -14,7 +16,7 @@ require('jquery-bem-utils');
 
 # Usage
 
-You're BEM has to be in the style of `block__element--modifier` for this plugin to work.
+Your BEM has to be in the style of `block__element--modifier` for this plugin to work.
 
 **Find Block**
 
@@ -23,7 +25,7 @@ findBlock(elementName)
 ```
 
 ```javascript
-$('body').findBlock('foobar'); // => returns $('.foo--red--padding-large')
+$('body').findBlock('foo'); // => returns $('.foo--red--padding-large')
 ```
 
 ```html
