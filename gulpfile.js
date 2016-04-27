@@ -1,31 +1,22 @@
-//packages
-var browserify = require('browserify');
+'use strict';
 
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
+const gulp = require('gulp');
+const babel = require('gulp-babel');
 
 //paths
-var paths = {
+let paths = {
 	js: {
 		watch: 'src/**/*.js',
-		src: 'src/jquery-bem.js',
+		src: 'src/jquery-bem-utils.js',
 		dest: 'dist',
-		destFile: 'jquery-bem.js'
 	}
 };
 
-gulp.task('js', function() {
-	var b = browserify({
-		entries: paths.js.src,
-		debug: true
-	}).transform('babelify', {presets: ['es2015']});
-
-	return b.bundle()
-		.pipe(source(paths.js.destFile))
-		.pipe(buffer())
-		.on('error', gutil.log)
+gulp.task('js', () => {
+	gulp.src(paths.js.src)
+		.pipe(babel({
+			presets: ['es2015']
+		}))
 		.pipe(gulp.dest(paths.js.dest));
 });
 

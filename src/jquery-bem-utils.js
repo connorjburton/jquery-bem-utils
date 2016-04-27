@@ -1,3 +1,5 @@
+'use strict';
+
 (function(root, factory) {
   if(typeof define === "function" && define.amd) {
     define(['jquery'], factory);
@@ -7,12 +9,33 @@
     factory(root.jQuery);
   }
 }(this, function($) {
-	var regex = {
+	class BEM {
+		constructor(opts = {}) {
+			this.options = Object.assign({
+				prefixes: {
+					element: '__',
+					modifier: '--'
+				}
+			}, opts);
+
+			console.log(Reflect.construct(this));
+
+			this.regex = {
+				
+			}
+		}
+
+		_regexBlock() {
+
+		}
+	};
+
+	let regex = {
 		block: function(name) {
 			if(!name.length) {
 				console.error('No name supplied in regex.block')
 			} else {
-				return name + '(?!__)';
+				return name + '(?!' + this.options.prefixes.element + ')';
 			}
 		},
 		element: function(name) {

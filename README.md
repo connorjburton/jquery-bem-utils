@@ -11,6 +11,7 @@ npm i --save-dev jquery-bem-utils
 ```
 
 ```javascript
+var $ = require('jquery');
 require('jquery-bem-utils');
 ```
 

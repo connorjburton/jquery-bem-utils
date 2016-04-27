@@ -28,6 +28,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 				}
 			}, opts);
 
+			console.log(Reflect.construct(this));
+
 			this.regex = {};
 		}
 
