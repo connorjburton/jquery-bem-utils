@@ -18,86 +18,86 @@
 				}
 			}, opts);
 
-			console.log(Reflect.construct(this));
-
 			this.regex = {
-				
+				block: (name) => {
+					if(!name.length) {
+						console.error('jQuery BEM Utils: No name supplied in BEM.regex.block');
+					} else {
+						return name + '(?!' + this.options.prefixes.element + ')';
+					}
+				},
+				element: (name) => {
+					if(!name.length) {
+						console.error('jQuery BEM Utils: No name supplied in BEM.regex.element')
+					} else {
+						return this.options.prefixes.element + name + '(?!' + this.options.prefixes.element + ')';
+					}
+				},
+				modifiers: () => {
+					return this.options.prefixes.modifier + '[a-z0-9]*[-_]?[a-z0-9]*';
+				},
+				modifier: (mod) => {
+					if(!mod.length) {
+						console.error('jQuery BEM Utils: No modifier supplied in BEM.regex.modifier');
+					} else {
+						return this.options.prefixes.modifier + mod + '$';
+					}
+				}
 			}
 		}
 
-		_regexBlock() {
-
-		}
-	};
-
-	let regex = {
-		block: function(name) {
-			if(!name.length) {
-				console.error('No name supplied in regex.block')
-			} else {
-				return name + '(?!' + this.options.prefixes.element + ')';
-			}
-		},
-		element: function(name) {
-			if(!name.length) {
-				console.error('No name supplied in regex.element')
-			} else {
-				return '__' + name + '(?!__)';
-			}
-		},
-		modifiers: function() {
-			return '--[a-z0-9]*[-_]?[a-z0-9]*';
-		}
-	}
-
-	$.fn.extend({
-		findBlock: function(name) {
-			return $('[class^="' + name + '"').filter(function() {
-				return this.className.match(new RegExp(regex.block(name), 'g'));
+		findBlock(name) {
+			return $('[class^=' + name + '"').filter(() => {
+				return this.className.match(RegExp(this.regex.block(name), 'g'));
 			});
-		},
-		findElement: function(name) {
-			return $(this).find('[class*="' + name + '"]').filter(function() {
-				return this.className.match(new RegExp(regex.element(name), 'g'));
-			});
-		},
-		addModifier: function(mod, unique) {
-			if(typeof mod === 'undefined') return;
+		}
 
-			var $this = $(this);
+		findElement(name) {
+			return $(this).find('[class*="' + name + '"]').filter(() => {
+				return this.className.match(RegExp(this.regex.element(name), 'g'));
+			});
+		}
+
+		addModifier(mod, unique) {
+			const $this = $(this);
+			if(typeof mod === 'undefined' || !$this.length) return;
 
 			if(!$this.hasModifier(mod)) {
-				var newClass = $this.attr('class') + '--' + mod;
+				const newClass = $this.attr('class') + this.options.prefixes.modifier + mod;
 				$this.attr('class', newClass);
 
 				if(unique) $this.siblings().removeModifier(mod);
 			}
-		},
-		removeModifier: function(mod) {
-			var $this = $(this);
+		}
+
+		removeModifier(mod) {
+			const $this = $(this);
 			if(!$this.length) return;
 
-			$this.attr('class', $this.attr('class').replace(new RegExp('--' + mod + '$'), ''));
-		},
-		getModifiers: function() {
-			var matches = $(this).attr('class').match(new RegExp(regex.modifiers(), 'gi'));
-
-			matches = matches.map(function(str) { return str.split('').splice(2, str.length).join(''); });
-
-			return matches;
-		},
-		hasModifier: function(mod) {
-			var $this = $(this);
-			var currentClass = $this.attr('class');
-			if(!currentClass) return false;
-			
-			var mod = '--' + mod;
-
-			if(currentClass.substr(currentClass.length - mod.length, currentClass.length) === mod) {
-				return true;
-			} else {
-				return false;
-			}
+			$this.attr('class', $this.attr('class').replace(RegExp(this.regex.modifier(mod)), ''));
 		}
-	});
+
+		getModifiers() {
+			const $this = $(this);
+			if(!$this.length) return;
+
+			const matches = $this.attr('class').match(RegExp(this.regex.modifiers(), 'gi'));
+
+			return matches.map((str) => {
+				return str.split('').splice(this.options.prefixes.modifier.length, str.length).join('');
+			});
+		}
+
+		hasModifier(mod) {
+			const $this = $(this);
+			const currentClass = $this.attr('class');
+			if(!$this.length || !currentClass.length) return false;
+
+			mod = this.options.prefixes.modifier + mod;
+
+			return currentClass.substr(currentClass.length - mod.length, currentClass.length) === mod;
+		}
+	};
+
+	$.fn.extend(new BEM());
 }));
