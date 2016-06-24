@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/connorjburton/jquery-bem.git"
+    "url": "git+https://github.com/connorjburton/jquery-bem-utils.git"
   },
   "keywords": [
     "bem",
@@ -19,9 +19,9 @@
   "author": "Connor Burton",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/connorjburton/jquery-bem/issues"
+    "url": "https://github.com/connorjburton/jquery-bem-utils/issues"
   },
-  "homepage": "https://github.com/connorjburton/jquery-bem#readme",
+  "homepage": "https://github.com/connorjburton/jquery-bem-utils#readme",
   "dependencies": {
     "jquery": "^2.2.3"
   },
