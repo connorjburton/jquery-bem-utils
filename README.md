@@ -11,6 +11,7 @@ npm i --save-dev jquery-bem-utils
 ```
 
 ```javascript
+var $ = require('jquery');
 require('jquery-bem-utils');
 ```
 
@@ -43,7 +44,7 @@ findElement(elementName)
 ```
 
 ```javascript
-$('body').findBlock('foo').findElement('bar'); // => returns ('.foo__bar')
+$('body').findBlock('foo').findElement('bar'); // => returns $('.foo__bar')
 ```
 
 ```html
