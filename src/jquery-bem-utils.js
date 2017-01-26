@@ -47,7 +47,7 @@
 		}
 
 		findBlock(name) {
-			return $('[class^=' + name + '"').filter(() => {
+			return $('[class^=' + name + '"]').filter(() => {
 				return this.className.match(RegExp(this.regex.block(name), 'g'));
 			});
 		}
